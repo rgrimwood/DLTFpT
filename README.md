@@ -100,3 +100,26 @@ Below is a breakdown of the lessons covered across the videos, including their d
 You've reached the bottom of this page! As a reward, here's a myopic trilobite created by Aglaé Bassens, illustrator of the book [Deep Learning Illustrated](https://deeplearningillustrated.com):  
 
 ![](https://github.com/illustrated-series/deep-learning-illustrated/blob/master/img/bespectacled_trilobite.jpeg)
+
+
+# Email from Nicholas Cauldwell
+
+Dear All,
+I tracked down the Deep Learning Illustrated author's github repository and he has updated them to be much more compatible with the current version of TensorFlow / Keras.
+These live at
+https://github.com/jonkrohn/DLTFpT/tree/master/notebooks
+the specific Jupyter notebooks are 
+https://github.com/jonkrohn/DLTFpT/blob/master/notebooks/shallow_net_in_tensorflow.ipynb
+https://github.com/jonkrohn/DLTFpT/blob/master/notebooks/intermediate_net_in_tensorflow.ipynb
+https://github.com/jonkrohn/DLTFpT/blob/master/notebooks/deep_net_in_tensorflow.ipynb
+The last line of each script currently breaks (another deprecated method disappearing) so two code changes needed:
+in the load dependencies block, add
+import numpy as np
+and at the very end, replace 
+model.predict_classes(valid_0)
+with 
+np.argmax(model.predict(valid_0), axis=-1)
+and as of 23rd Novemeber 12:14, these modifications have made all three scripts behave.
+
+Best wishes,
+Nicholas
